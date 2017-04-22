@@ -1,0 +1,474 @@
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+       <title>Missourian Infographics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" / >
+
+        <!-- THESE ARE THE CSS FILES I ADDED -->
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700">
+
+                        <!-- THESE ARE THE JAVASCRIPT FILES I ADDED -->
+                <script src="http://bloximages.newyork1.vip.townnews.com/columbiamissourian.com/content/tncms/live/components/jquery/resources/scripts/jquery.min.js?_dc=1423174924"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery-1.9.1.js"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery-ui-1.10.2.custom.js"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery.ui.tooltip.js"></script>
+                <script type="text/javascript" src="http://www.columbiamissourian.com/app/projects/Project_files/js/jquery.cycle.all.js"></script>
+
+                <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+                <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+                <!-- TAKE THESE OUT TO PUBLISH ON COLUMBIAMISSOURIAN.COM -->
+                <script src="http://code.highcharts.com/highcharts.js"></script>
+                <script src="http://code.highcharts.com/modules/exporting.js"></script>
+                <script type="text/javascript" src="http://media.columbiamissourian.com/highcharts_restyle/missourian.js"></script>
+
+        <link rel="stylesheet" href="/static/style.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <body d="site" class="base">
+
+      <div id="main" style="max-width: 930px; margin: auto;">
+
+        <!-- ////////////////////Headline and intro here ////////////////////// -->
+            <div class="centered">  
+                <h1 class='domine'><img src="images/title.png"></h1>
+                <p class="body domine">Missouri’s state prison system is facing two major challenges 
+        today: overcrowding and increase of aging inmates.  These two 
+        inner-related problems haven’t been driven by a rapid growth 
+        of crime, but by the encouragement on tougher sentencing 
+        policies from the state government.</p>
+                <p class="body domine">In 1979, Missouri state government approved the Capital Murder Statute (section 565.008 RSMo) which required an offender to serve at least 50 years prior to being eligible for parole release. The section was 
+        replaced in 1985 by a new Murder First Degree Statute (section 565.020 RSMo), which prohibited parole release.</p>
+                <p class="body domine"> Because of tougher law on sentencing, Missouri is witnessing a larger group of people locked up in the prisons and getting old behind the bars.</p>
+
+                <div class="byline">By <a href="http://www.yangsunjournalism.com/" target="_blank">Yang Sun</a>, <a href="http://www.columbiamissourian.com/" target="_blank">Columbia Missourian</a> | May, 2017</div>
+                <hr />
+            </div>
+            
+            <!-- //////////////////Interactive map showing all the prisons /////////////////////// -->
+
+                <div class="single">
+                  <div class="graphic">
+                    <h4>State Prisons in Missouri</h4>
+                      <p class="body">There are 21 state prisons in Missouri operated by 
+            Department of Corrections. The entire system can hold 
+            32765 inmates. According to Division of Adult Institutions 
+            Formal Director Dave Dormire, in the summer of 2016 the 
+            DOC had roughly 33,900 inmates, making for even more 
+            cramped conditions than what the system was previously 
+            experiencing.</p>
+                  </div>
+                </div>
+
+        <div id="map" style="width:100%; height:450px;"></div>
+        <script type="text/javascript">
+            var map = L.map('map').setView([38.12, -92.18], 6.49);
+            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            });
+            map.addLayer(osmLayer);
+            var data = {
+              "type": "FeatureCollection",
+              "features": [
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Algoa Correctional Center",
+                    "id": "1"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-92.0545745, 38.5525955]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Boonville Correctional Center",
+                    "id": "2"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-92.7317713, 38.9775402]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Chillicothe Correctional Center",
+                    "id": "3"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-93.5411406, 39.8322546]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Crossroads Correctional Center",
+                    "id": "4"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-94.2257877, 39.7655671]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Eastern Reception, Diagnostic and Correctional Center ",
+                    "id": "5"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-90.5163831, 37.5064753]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Farmington Correctional Center",
+                    "id": "6"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-90.5194152, 37.6647686]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Fulton Reception and Diagnostic Center",
+                    "id": "7"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-91.9260818, 38.8450992]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Jefferson City Correctional Center",
+                    "id": "8"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-92.0761388, 38.5472463]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Kansas City Reentry Center",
+                    "id": "9"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-94.5967258, 39.1055069]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Maryville Treatment Center",
+                    "id": "10"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-94.8173689, 40.3454027]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Missouri Eastern Correctional Center",
+                    "id": "11"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-90.7050389, 38.4893158]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Moberly Correctional Center",
+                    "id": "12"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-92.4398741, 39.3632322]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Northeast Correctional Center",
+                    "id": "13"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-91.2306496, 39.3676777]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Ozark Correctional Center",
+                    "id": "14"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-92.8782384, 37.1497655]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Potosi Correctional Center",
+                    "id": "15"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-90.7384038, 37.936062]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "South Central Correctional Center",
+                    "id": "16"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-91.8754329, 37.5050724]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Southeast Correctional Center",
+                    "id": "17"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-89.3496665, 36.8944989]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Tipton Correctional Center",
+                    "id": "18"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-92.932185, 38.5067061]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Western Missouri Correctional Center",
+                    "id": "19"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-94.2313081, 39.7643293]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Western Reception, Diagnostic and Correctional Center",
+                    "id": "20"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-94.771902, 39.6448649]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "name": "Women&#39;s Eastern Reception, Diagnostic and Correctional Center",
+                    "id": "21"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-91.4204383, 39.4348191]
+                  }
+                }
+                
+              ]
+            };
+            var blackIcon = L.Icon.extend({
+                options: {
+                    iconUrl: "static/marker-24.png",
+                    iconSize: [24, 24]
+                }
+            });
+            var dataLayer = L.geoJson(data, {
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, {icon: new blackIcon()});
+                },
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(
+                        '<a href="' + feature.properties.id + '/index.html">' +
+                            feature.properties.name +
+                        '</a>'
+                    );
+                }
+            });
+            map.addLayer(dataLayer);
+        </script>
+
+        <!-- Timeline goes here -->
+        <div class="single" id="timeline">
+          <div class="graphic">
+              <div>
+                <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1F3elesH6lAEPJ_hi81TmWAzWhaUFh8BUO0qlovMM2jY&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+              </div>
+
+          </div>
+
+
+
+          <!-- Line chart goes here-->
+              <div class="single">
+            <div class="graphic">
+              <h4 style="margin-top:4em;">The growth of state prisons' inmate population</h4>
+                <p class="body" style="margin-bottom:3em;"> The inmate population within the state prison system has set on an rollercoaster with numbers going up and down each year.  The overall population has increased drastically from 1979 to 2015, the total has grown by more than five times. </p>
+                <div>
+                  <iframe class='highcharts-iframe' src='//cloud.highcharts.com/embed/eparixy' style='border: 0; width: 100%; height: 500px'></iframe>
+                </div>
+
+            </div>
+          </div>
+
+
+
+
+              <!-- END SIMPLE IMAGE -->
+
+              <!-- /////////////////////// END SINGLE LAYER///////////////////////////--> 
+              
+
+
+
+
+              <!-- /////////////////////// BEGIN TWO-GRAPHIC LAYER ///////////////////////////-->
+                <!-- FIRST GRAPHIC:-->
+              <div class="double">
+                <div class="graphic">
+                  <p class="body">Facing the overcrowding of the
+          prisons, Michael Wolff,former 
+          Missouri Supreme Court judge 
+          and chief justice, believes that 
+          building new prisons is the worst 
+          solution. More people will end up 
+          in prisons, which causing a 
+          vicious circle.</p>
+                  <div><img src="images/photo1.jpg"></div>
+                </div>
+              </div>
+                <!-- SECOND GRAPHIC:-->
+              <div class="double">
+                <div class="graphic">
+                  <p class="body">Department of Corrections’ new 
+          Director Anne Precythe claimed 
+          that she’s committed to not 
+          building another prison. She said 
+          the department would instead look
+          to reduce prison populations before 
+          expanding the system.</p>
+                  <div><img src="images/photo2.jpg"></div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <!-- ///////////////////////END TWO-GRAPHIC LAYER///////////////////////////-->
+
+              <!-- SIMPLE IMAGE -->
+              <div class="single">
+                <div class="graphic">
+                  <h4>Age sooner, cost higer</h4>
+                    <p class="body">TThe norm in prisons is to use 55-and-older as 
+          the metric associated with senior prisoners, much younger than the average. Most inmates had abused drugs and alcohol or neglected their health for years. People sent to prison are generally less healthy than the general population.</p>
+          <p>According to a Pew report, health care for older prisoners costs between four and eight times what it does for younger prisoners.</p>
+                </div>
+              </div>    
+              
+
+              <!-- /////////////////////// BEGIN TWO-GRAPHIC LAYER ///////////////////////////-->
+                <!-- FIRST GRAPHIC:-->
+              <div class="double">
+                <div class="graphic">
+                  <h4>Percentage change by age group (From 2008 to 2015)</h4>
+                  <p class="body">The inmates above age 55 was the fastest growthing age group. This age group also takes more percentage among the total population. </p>
+                  <div>
+                    <iframe class='highcharts-iframe' src='//cloud.highcharts.com/embed/ivahara' style='border: 0; width: 100%; height: 500px'></iframe>
+                  </div>
+                </div>
+              </div>
+                <!-- SECOND GRAPHIC:-->
+              <div class="double">
+                <div class="graphic">
+                  <h4>Missouri's approaches</h4>
+                  <p class="body">Missouri has taken several steps to address its 
+          growing geriatric prisoner population. However, the rise of inmates population and amount of geriatric prisoners has caused an increase of  Department of Corrections’ budget by 
+          over 30% from 1999 to 2015.</p>
+                  <div><img src="images/age2.png"></div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <!-- ///////////////////////END TWO-GRAPHIC LAYER///////////////////////////-->
+              
+
+
+
+          <!-- //////////////////////END OF GRAPHIC TEMPLATE ELEMENTS: DO NOT DELETE ANYTHING BELOW HERE ///////////////////////// -->
+            
+
+            </div>
+          </body>
+          </html>
+
